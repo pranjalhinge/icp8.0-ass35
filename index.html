@@ -11,10 +11,74 @@
             object-fit: cover;
             display: block;
             margin: 30px auto;
+            border-radius: 10px;
+        }
+        .btn-container{
+            position: relative;
+            width: fit-content;
+            display: block;
+            margin: 10px auto;
+        }
+        .btn{
+            margin: 0 20px;
+            height: 60px;
+            cursor: pointer;
+        }
+        .btn-left{
+            position: absolute;
+            left: -78px;
+            top: 120px;
+        }
+        .btn-right{
+            position: absolute;
+            height: 55px;
+            right: -75px;
+            top: 120px;
         }
     </style>
 </head>
 <body>
-    <img src="pexels-jamphotography-2626665.jpg" class="Gallary-img"/>
+    <div class="btn-container">
+    <img src="bike1.jpg" class="Gallary-img" id="img"/>
+
+    <img src="back.png" type="button" class="btn btn-left" onclick="prev()"/>
+    <img src="next.png" type="button" class="btn btn-right" onclick="next()"/>
+    </div>
+
+    <script>
+        const imagesArr = [
+            "./bike1.jpg",
+            "./bike2.jpg",
+            "./bike3.jpg",
+            "./bike4.jpg",
+        ];
+
+        let imgindex = 0;
+
+        function prev(){
+            if(imgindex==0){
+                imgindex = imagesArr.length - 1;
+            }
+            else{
+                imgindex--;
+            }
+            const imgElement = document.getElementById('img');
+            imgElement.src=imagesArr[imgindex];
+        }
+
+        function next(){
+            if(imgindex == imagesArr.length - 1){
+                imgindex = 0;
+            }
+            else{
+                imgindex++;
+            }
+            const imgElement = document.getElementById('img');
+            imgElement.src=imagesArr[imgindex];
+
+
+        }
+        setInterval(next, 2000);
+    </script>
 </body>
 </html>
